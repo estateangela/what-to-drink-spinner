@@ -15,7 +15,7 @@ class DrinkWheelApp extends StatefulWidget {
 }
 
 class _DrinkWheelAppState extends State<DrinkWheelApp> {
-  final List<String> options = ["奶茶", "綠茶", "紅茶", "咖啡"];
+  final List<String> options = ["季緣", "麻古", "得正", "七盞茶"];
   late final StreamController<int> controller;
   final TextEditingController _textController = TextEditingController();
 
@@ -50,6 +50,7 @@ class _DrinkWheelAppState extends State<DrinkWheelApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,

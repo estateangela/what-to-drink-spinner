@@ -18,6 +18,12 @@ class _DrinkWheelAppState extends State<DrinkWheelApp> {
   final List<String> options = ["季緣", "麻古", "得正", "七盞茶"];
   late final StreamController<int> controller;
   final TextEditingController _textController = TextEditingController();
+  final List<Color> wheelColors = [
+  Colors.cyan[700]!,
+  Colors.cyan[600]!,
+  Colors.cyan[500]!,
+  Colors.cyan[400]!,
+   ];
 
   @override
   void initState() {
@@ -56,8 +62,9 @@ class _DrinkWheelAppState extends State<DrinkWheelApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
+        backgroundColor: Colors.cyan[50],
         appBar: AppBar(
-          title: const Text("飲料轉盤"),
+          title: const Text("飲料轉盤 by Angela"),
           centerTitle: true,
         ),
         body: Padding(
@@ -69,10 +76,18 @@ class _DrinkWheelAppState extends State<DrinkWheelApp> {
                 flex: 2,
                 child: FortuneWheel(
                   selected: controller.stream,
-                  items: options.map((e) => FortuneItem(
+                  items: options.asMap().entries.map((entry) => FortuneItem(
+                    style: FortuneItemStyle(
+                      color: wheelColors[entry.key % wheelColors.length],
+                      borderColor: Colors.white,
+                      borderWidth: 2,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(e),
+                      child: Text(entry.value,style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),),
                     ),
                   )).toList(),
                   animateFirst: false,
